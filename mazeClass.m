@@ -9,8 +9,8 @@ classdef mazeClass
          x
          y
          z
-         maxWallLength = 9;
-         enablePlotting = true;
+         maxWallLength = 100;
+         enablePlotting = false;
          ploter
          endCoo
          startCoo
@@ -24,7 +24,7 @@ classdef mazeClass
             if any(dimension <= 3)
                 error('dimension cannot be smaller than 3 in any way')
             end
-            if any(dimension > 20)
+            if any(dimension > 30)
                 obj.enablePlotting = false;
             end
             for i = 1:length(dimension)

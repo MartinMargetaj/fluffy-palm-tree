@@ -18,6 +18,7 @@ classdef plotClass
             greenColor = obj.actualMaze == 4;
             redColor = obj.actualMaze == 5;
             yellowColor =  obj.actualMaze == 3;
+            lighBlueColor = obj.actualMaze == 10;
             plotedPic(:,:,2) = plotedPic(:,:,2) - blueColor;
             plotedPic(:,:,1) = plotedPic(:,:,1) - blueColor;
             plotedPic(:,:,3) = plotedPic(:,:,3) - greenColor;
@@ -25,6 +26,10 @@ classdef plotClass
             plotedPic(:,:,3) = plotedPic(:,:,3) - redColor;
             plotedPic(:,:,2) = plotedPic(:,:,2) - redColor;
             plotedPic(:,:,3) = plotedPic(:,:,3) - yellowColor;
+            plotedPic(:,:,2) = plotedPic(:,:,2) - lighBlueColor;
+            plotedPic(:,:,1) = plotedPic(:,:,1) - lighBlueColor;
+            plotedPic(:,:,3) = plotedPic(:,:,3) - lighBlueColor/2;
+            
             image(plotedPic)
             axis square
             axis off
