@@ -7,8 +7,10 @@ maze = mazeClass;
 
 
 %% generate maze 
-maze = maze.gen_new(500);
+maze = maze.gen_new(19);
 
 %% plot maze
 
 ploter = ploter.plot_maze(maze.maze);
+
+maze = maze.get_start_end;

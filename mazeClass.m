@@ -3,13 +3,17 @@ classdef mazeClass
          maze
          wallValue = 1;
          seedValue = 3;
+         startValue = 4;
+         endValue = 5;
          maze3D = false;
          x
          y
          z
-         maxWallLength = 20;
+         maxWallLength = 9;
          enablePlotting = true;
          ploter
+         endCoo
+         startCoo
     end
     methods
         function obj = mazeClass
@@ -20,7 +24,7 @@ classdef mazeClass
             if any(dimension <= 3)
                 error('dimension cannot be smaller than 3 in any way')
             end
-            if any(dimension > 30)
+            if any(dimension > 20)
                 obj.enablePlotting = false;
             end
             for i = 1:length(dimension)
@@ -50,6 +54,27 @@ classdef mazeClass
             obj = obj.fill_edges;
             obj = obj.fill_seeds;
             obj = obj.place_walls;
+        end
+        
+        function obj = get_start_end(obj)
+            while true
+                startCooTemp = ginput(1);
+                obj.startCoo = [round(startCooTemp(2)),round(startCooTemp(1))];
+                if obj.maze(obj.startCoo(1),obj.startCoo(2)) == 0
+                    break
+                end
+            end
+            obj.maze(obj.startCoo(1),obj.startCoo(2)) = obj.startValue;
+            obj.ploter.plot_maze(obj.maze);
+            while true
+                endCooTemp = ginput(1);
+                obj.endCoo = [round(endCooTemp(2)),round(endCooTemp(1))];
+                if obj.maze(obj.endCoo(1),obj.endCoo(2)) == 0
+                    break
+                end
+            end
+            obj.maze(obj.endCoo(1),obj.endCoo(2)) = obj.endValue;
+            obj.ploter.plot_maze(obj.maze);
         end
         
         function obj = fill_edges(obj)
